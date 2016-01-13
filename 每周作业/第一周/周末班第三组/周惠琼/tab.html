@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<body>
+	<ul id="tabNav">
+    	<li>选项1</li>
+        <li>选项2</li>
+        <li>选项3</li>
+    </ul>
+    <div id="tabBox">
+    	<div class="tabItem">1</div>
+        <div class="tabItem" style="display:none">2</div>
+        <div class="tabItem" style="display:none">3</div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+var tabItems = document.getElementById('tabNav').getElementsByTagName('li'),
+	tabBox	= document.getElementById('tabBox').getElementsByClassName('tabItem');
+	//console.log(typeof tabItems);
+Object.prototype.init = function(opt){
+	var that = this;
+		that.opt = opt;//默认参数
+	for(var i=0; i<tabItems.length; i++){
+		(function(i){
+			that[i].onclick = function(){
+				for(var j=0; j<tabBox.length; j++){
+					that.opt.target[j].style.display = 'none';
+				};
+				that.opt.target[i].style.display = 'block';
+			};
+		})(i)
+	};
+};
+
+tabItems.init({
+	target: tabBox
+});
+/*
+**兼容IE8 及以下getElementsByClassName
+*/
+document.getElementsByClassName = function(className){
+	var arr = [];
+	if(!document.getElementsByClassName){
+		var allDom = document.getElementsByTagName('*');
+		for(var i=0; i<allDom.length; i++){
+			var classArr = allDom[i].className.split(' ');
+			for(var j=0; j<classArr.length; j++){
+				if(classArr[j] == className ){
+					arr.push(classArr[j]);
+					break;
+				};
+			};
+		};
+		return arr;
+	};
+};
+
+</script>
