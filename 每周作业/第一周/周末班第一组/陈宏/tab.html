@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>页签切换</title>
+    <style>
+        body, div, ul, li {
+            margin: 0;
+            padding: 0;
+            font-family: "microsoft yahei", arial;
+            font-size: 14px;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        #tab {
+            width: 500px;
+            margin: 80px auto 0;
+        }
+
+        #tab ul {
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        #tab li {
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-bottom: 0;
+            cursor: pointer;
+
+        }
+
+        #tab li.current {
+            background: -webkit-linear-gradient(top left, #00cccc, #00ff00);
+            border-bottom: 0;
+        }
+
+        #tab div {
+            width: 498px;
+            border: 1px solid #ddd;
+            display: none;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: #000;
+        }
+
+        #tab div.current {
+            display: block;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="current">签一</li>
+        <li>签二</li>
+        <li>签三</li>
+    </ul>
+    <div class="current">签一内容</div>
+    <div>签二内容</div>
+    <div>签三内容</div>
+</div>
+<script type="text/javascript">
+    //    1/分析思路 当鼠标移动到li标签时清空所有li和div样式，并将样式添加给对应的li和div
+    //2、获取操作元素
+    var oTab = document.getElementById("tab");
+    var oLis = oTab.getElementsByTagName("li");
+    var oDivs = oTab.getElementsByTagName("div");
+
+    for(var i=0;i<oLis.length;i++){
+
+        (function(i){
+            oLis[i].onmouseover= function(){
+                oLis[i].className = "current";
+                oDivs[i].className = "current";
+            }
+            oLis[i].className = "";
+            oDivs[i].className = "";
+        })(i);
+    }
+
+
+</script>
+</body>
+</html>
