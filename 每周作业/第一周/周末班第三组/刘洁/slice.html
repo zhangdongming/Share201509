@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+/* 不传参数，返回原数组
+   传一个参数:参数转为int类型，正数前面数截取到结尾，负数从后面数截取到结尾。
+   传两个参数时，数转为int类型，从n截取到m，负数就倒着截取，从-n到-m位置。*/
+
+    Array.prototype.mySlice=function(){
+        if(arguments.length==0){
+            return this;
+        }else if(arguments.length==1){
+           var n=parseInt(arguments[0]);
+            if(n<0){
+                n=n+ary.length;
+            }
+            var ary2=[];
+            for(var i=n;i<ary.length;i++){
+                ary2.push(ary[i]);
+            }
+            return ary2;
+
+        }else{
+            var n=parseInt(arguments[0]);
+            var m=parseInt(arguments[1]);
+            if(n<0){
+                n=n+ary.length;
+            }
+            if(m<0){
+                m=m+ary.length;
+            }
+            if(n<m){
+                var ary3=[];
+                for(var i=n;i<m;i++){
+                    ary3.push(ary[i]);
+                }
+                return ary3;
+            }else{
+                return [];
+            }
+
+        }
+    }
+</script>
+</body>
+</html>
