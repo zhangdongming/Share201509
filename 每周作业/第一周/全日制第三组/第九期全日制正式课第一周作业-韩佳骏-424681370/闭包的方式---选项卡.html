@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #tab, ul, div {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            font-family: "Microsoft Yahei", Arial, SimSun;
+
+        }
+ul,li{
+    list-style: none;
+}
+        #tab {
+            width: 500px;
+           margin: 10px auto 0;
+        }
+
+        #tab ul {
+            position: relative;
+            top: 1px;
+        }
+
+        #tab ul li {
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid forestgreen;
+            float: left;
+            margin: 0 20px 0 0;
+        }
+
+        #tab ul li.select {
+            background-color: #0000FF;
+            border-bottom: none;
+        }
+
+        #tab div {
+            clear: both;
+            border: 1px solid darkorange;
+            text-align: center;
+            height: 250px;
+            display: none;
+          line-height: 250px;
+
+        }
+
+        #tab div.select {
+            display: block;
+            background-color: #0000FF;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="select">中国</li>
+        <li>美国</li>
+        <li>日本</li>
+    </ul>
+    <div class="select">5000文化</div>
+    <div>经济发达</div>
+    <div>黑丝他</div>
+</div>
+<script type="text/javascript">
+//    方法一闭包的方式
+var oTab = document.getElementById("tab");
+    var oLis = oTab.getElementsByTagName("li");
+    var oDivs = oTab.getElementsByTagName("div");
+    for (var i = 0; i < oLis.length; i++) {
+        (function(i){
+            oLis[i].onmouseover = function () {
+                for(var j=0;j<oLis.length;j++){
+
+                    oLis[j].className="";
+                    oDivs[j].className="";
+                }
+                oLis[i].className = "select";
+                oDivs[i].className="select";
+            }
+        })(i);
+
+    }
+//    方法二自定义方法
+//    var oTab = document.getElementById("tab");
+//    var oLis = oTab.getElementsByTagName("li");
+//    var oDivs = oTab.getElementsByTagName("div");
+//    for (var i = 0; i < oLis.length; i++) {
+//        var oLi = oLis[i];
+//        oLi.zhufeng = i;
+//        oLi.onmouseover = function () {
+//            for (var j = 0; j < oLis.length; j++) {
+//                oLis[j].className = "";
+//                oDivs[j].className = "";
+//            }
+//            this.className = "select";
+//            oDivs[this.zhufeng].className="select";
+//
+//        }
+//    }
+
+
+</script>
+</body>
+</html>
