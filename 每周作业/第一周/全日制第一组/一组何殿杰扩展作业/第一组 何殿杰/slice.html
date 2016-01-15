@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+    var ary = [1,2,3,4,5,6,7,8,9];
+
+   Array.prototype.mySlice = function(a,b){
+       var ary = this;
+       var newAry = [];
+       if(b<0){
+           b = ary.length-(Math.abs(b))
+       }
+
+       if(a<0){
+           a = ary.length-(Math.abs(a))
+       }
+       var a1 = Math.floor(Number(a));
+       if(isNaN(a1) || a1 ==undefined){
+           a1 = 0
+       }
+       if(b==undefined){
+           for(var h = 0;h<ary.length;h++){
+               if(a1<=h){
+                   newAry.push(ary[h])
+               }
+           }
+
+       }
+       var b1 = Math.floor(Number(b))
+
+           if(isNaN(b1)){
+               b1 = 0
+           }
+           for (var i=0;i<ary.length;i++){
+
+               if(a1<=i && i<b1){
+                   newAry.push(ary[i]);
+               }
+           }
+
+       return newAry
+   };
+
+console.log(ary.mySlice({},-2))
+    console.log(ary)
+
+</script>
+</body>
+</html>

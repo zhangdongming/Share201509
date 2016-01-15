@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    Number.prototype.plus = function(n){
+       var numm = parseFloat(this)
+
+       var num = parseFloat(n);
+        var total = numm + num;
+       if(isNaN(total)){
+
+       }
+     return parseFloat(total)
+    }
+
+
+
+
+    Number.prototype.minus = function(n){
+        var numm = parseFloat(this)
+
+        var num = parseFloat(n);
+        var total = numm - num;
+        if(isNaN(total)){
+
+        }
+        return parseFloat(total)
+    }
+
+    console.log((5).plus(2).minus(6))
+
+
+</script>
+</html>
