@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    //    1、扩展作业题(原型链)
+    //    数组中有一个方法叫做slice,实现数组的查询:slice(n,m) slice(n) slice(0) slice() ...
+    //    一个slice很据传递的参数值的不一样可以实现很多种不同的操作，自己回去深入研究slice的不同操作:
+    //    1)一个参数都不传、传递一个参数值、传递两个参数值
+    //    2)参数传递的是负数、小数
+    //    3)n比m要大
+    //            ...
+    //  要求你们自己实现一个mySlice的方法(在内置的原型上),实现和内置slice一模一样的功能操作
+    //    Array.prototype.mySlice=function(){//this->当前要操作的数组}
+    Array.prototype.mySlice = function mySlice() {
+        var con = [];
+//        for (var i = 0; i <=1; i++) {
+//        }
+//
+//        1）就一个参数且这个参数小于0
+        if (arguments[0] < 0 && arguments[1] == undefined) {
+            arguments[0] = this.length + arguments[0];
+        }
+//        2）有两个参数，第一个小于0，第二个大于0
+        if (arguments[0] < 0 && arguments[1] > 0) {
+            return con;
+        }
+//        3）有两个参数，第一个大于0，第二个小于0
+        if (arguments[0] > 0 && arguments[1] < 0) {
+            for (var j = arguments[0]; j < this.length + arguments[1]; j++) {
+                con.push(this[j]);
+            }
+            return con;
+        }
+//        4）如果第一个参数大于第二个参数
+        if (arguments[0] > arguments[1]) {
+            return con;
+        }
+//        5)如果传递一个参数且这个参数是正小数
+        var man = Math.floor(arguments[0]);
+        if (0 < arguments[0] - man < 1) {
+            for (var j = man; j < this.length; j++) {
+                con.push(this[j]);
+            }
+            return con;
+        }
+//        6）一个参数都不传的情况
+        if (arguments.length == 0) {
+            for (var j = 0; j < this.length; j++) {
+                con.push(this[j])
+            }
+            return con;
+        }
+//        7）只传一个参数的情况
+        if (arguments.length == 1) {
+            for (var j = arguments[0]; j < this.length; j++) {
+                con.push(this[j]);
+            }
+            return con;
+        }
+//        8）传两个参数的情况
+        if (arguments.length == 2 && arguments[0] < arguments[1]) {
+            for (var j = arguments[0]; j < arguments[1]; j++) {
+                con.push(this[j]);
+            }
+            return con;
+        }
+    };
+
+    var ary = [1, 2, 3, 4, 5];
+    console.log(ary.slice(1));
+    console.log(ary.mySlice(1));
+
+</script>
+</body>
+</html>
