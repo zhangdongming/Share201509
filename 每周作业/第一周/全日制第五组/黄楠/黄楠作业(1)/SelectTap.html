@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        ul, li, div {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            position: relative;
+            top: 1px;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        ul li {
+            float: left;
+            list-style: none;
+            margin-right: 20px;
+            border: 1px solid green;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        div {
+            display: none;
+            width: 500px;
+            height: 200px;
+            background-color: pink;
+            border: 1px solid green;
+        }
+
+        ul li.active {
+            background-color: pink;
+            border-bottom-color: pink;
+        }
+
+        div.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li class="active">第一个</li>
+    <li>第二个</li>
+    <li>第三个</li>
+</ul>
+<div class="active">
+    11111111111
+</div>
+<div>
+    22222222222222
+</div>
+<div>
+    333333333333
+</div>
+<script type="text/javascript">
+    //选项卡
+    var oUl = document.getElementById('menu');
+    var oLi = oUl.getElementsByTagName('li');
+    var oDiv = document.getElementsByTagName('div');
+    for (var i = 0; i < oLi.length; i++) {
+        ~function (i) {
+            oLi[i].onclick = function () {
+                for (var j = 0; j < oLi.length; j++) {
+                    oLi[j].className = '';
+                    oDiv[j].className = '';
+                }
+                this.className = 'active';
+                oDiv[i].className = 'active';
+            }
+        }(i);
+    }
+
+
+</script>
+</body>
+</html>

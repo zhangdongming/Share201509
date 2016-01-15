@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul {
+            list-style: none;
+            font-family: "Microsoft Yahei";
+
+        }
+
+        li {
+            padding: 0 7px;
+            height: 34px;
+            line-height: 34px;
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+        }
+
+        div.tu {
+            position: relative;
+            position: absolute;
+            top: 40px;
+            right: 10px;
+        }
+
+        #tuceng {
+            position: absolute;
+            bottom: 16px;
+            left: 17px;
+
+        }
+
+        #a {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        #b {
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        li.select {
+            background-color: #699f00;
+        }
+
+        #d img {
+            /*position: absolute;*/
+            display: none;
+        }
+
+        #d img.select {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="boss">
+    <div class="tu">
+        <img id="c" src="img/beijng.png" alt=""/>
+        <ul id="tuceng">
+            <li class="select" id="a">秦时明月：墨家机关城登场</li>
+            <li>跑男3:孙俪霸气旋风踢超哥秒怂</li>
+            <li>废柴兄弟3：王宁修睿大笑归来</li>
+            <li>隐藏的歌手：黄小琥崇拜蔡健雅</li>
+            <li>蜀山战纪3：银杏夫妇爱恨两难</li>
+            <li>加油小当家：赵文卓亮“功夫”</li>
+            <li>女生专场：专属我们的少女时代</li>
+            <li>笑霸来了：要致富，穿秋裤</li>
+            <li>华少阮经天淤泥挖藕怒刷cp感</li>
+            <li id="b">加入爱奇艺，让我们成为一家人</li>
+        </ul>
+    </div>
+    <div id="d">
+        <img class="select" src="img/a1.jpg" alt=""/>
+        <img src="img/a2.jpg" alt=""/>
+        <img src="img/a3.jpg" alt=""/>
+        <img src="img/a4.jpg" alt=""/>
+        <img src="img/a5.jpg" alt=""/>
+        <img src="img/a6.jpg" alt=""/>
+        <img src="img/a7.jpg" alt=""/>
+        <img src="img/a8.jpg" alt=""/>
+        <img src="img/a9.jpg" alt=""/>
+        <img src="img/a10.jpg" alt=""/>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var oLis = document.getElementsByTagName("li");
+    var oDiv = document.getElementById("d");
+    var oImg = oDiv.getElementsByTagName("img");
+    //    function tabChange(nIndex){
+    //        for(var i=0;i<oLis.length;i++){
+    //            oLis[i].className="";
+    //            oImg[i].className="";
+    //        }
+    //        oImg[nIndex].className="select";
+    //        oLis[nIndex].className="select";
+    //    }
+    //    for(var i=0;i<oLis.length;i++){
+    //        oLis[i].zhuFeng=i;
+    //        oLis[i].onmousemove=function(){
+    //            console.log(this.zhufeng)
+    //            tabChange(this.zhuFeng);
+    //            }
+    //        }
+//
+    for (var i = 0; i < oLis.length; i++) {
+        (function(i){
+            oLis[i].onmouseover = function () {
+            for (var j = 0; j < oLis.length; j++) {
+                oLis[j].className = "";
+                oImg[j].className = "";
+            }
+            oLis[i].className = "select";
+            oImg[i].className = "select";
+        };})(i);
+    }
+//    function a() {
+//        var i = 0;
+//        function b() {
+//            i++;
+//            if (i >= oLis.length || j >= oLis.length) {
+//                i = 0;
+//                j = 0;
+//            }
+//            for (var j = 0; j < oLis.length; j++) {
+//                oLis[j].className = "";
+//                oImg[j].className = "";
+//            }
+//            oLis[i].className = "select";
+//            oImg[i].className = "select";
+//        }
+//        return b;
+//    }
+//    var c = a();
+//    window.setInterval(function () {c()}, 100)
+
+
+
+
+</script>
+</body>
+</html>

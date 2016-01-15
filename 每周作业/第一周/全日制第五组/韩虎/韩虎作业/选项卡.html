@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body, div, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        #oid {
+            width: 500px;
+            margin: 10px auto;
+        }
+
+        #oid ul {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        #oid ul li {
+            margin-right: 5px;
+            margin-bottom: -1px;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid green;
+            float: left;
+        }
+
+        #oid ul li.select {
+            background-color: orange;
+            border-bottom-color: orange;
+        }
+
+        #oid div {
+            width: 315px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border: 1px solid green;
+            clear: both;
+            display: none;
+            background-color: orange;
+        }
+
+        #oid div.select {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="oid">
+    <ul>
+        <li class="select">电影</li>
+        <li>电视局</li>
+        <li>音乐</li>
+    </ul>
+    <div class="select">速度激情四</div>
+    <div>爱情公寓四</div>
+    <div>Hello</div>
+</div>
+<script type="text/javascript">
+    var oDiv = document.getElementById("oid");
+    var oLis = oDiv.getElementsByTagName("li");
+    var oDivs = oDiv.getElementsByTagName("div");
+    function tabchang(cruIndex) {
+        for (var i = 0; i < oLis.length; i++) {
+            oLis[i].className = "";
+            oDivs[i].className = "";
+        }
+        oLis[cruIndex].className = "select";
+        oDivs[cruIndex].className = "select";
+    }
+/*    for (var i = 0; i < oLis.length; i++) {
+            //oLis[i].haha = i;
+            oLis[i].onclick = (function(i){
+                return function(){
+                    tabchang(i)
+                };
+
+            })(i);*/
+    for (var i = 0; i < oLis.length; i++) {
+        //oLis[i].haha = i;
+        oLis[i].onclick = (function(i){
+            return function(){
+                tabchang(i)
+            };
+
+        })(i);
+
+    }
+
+</script>
+</body>
+</html>

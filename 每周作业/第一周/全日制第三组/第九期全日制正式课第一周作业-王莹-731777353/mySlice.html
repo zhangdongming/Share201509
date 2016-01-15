@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    Array.prototype.mySlice = function mySlice() {
+        var ary = [];
+        var n = null, l = null;
+        //先判断是几个参数，如果大于2，删除多余的参数
+        if (arguments.length > 2) {
+            arguments.length = 2;
+        }
+        //挨个检测参数
+        for (var i = 0; i < arguments.length; i++) {
+            //先转换为有效数字
+            arguments[i] = Number(arguments[i]);
+            //如果传递的值是小于0，先向上取整再转化为索引
+            if (arguments[i] < 0) {
+                arguments[i] = Math.ceil(arguments[i] + this.length);
+            }
+            //如果是正数向下取整
+            else {
+                arguments[i] = Math.floor(arguments[i]);
+            }
+        }
+        //第一种情况  没有传递参数 则返回原数组
+        if (arguments.length === 0) {
+            n = 0;
+            l = this.length;
+        }
+        //第二种情况 传递了一个参数
+        else if (arguments.length === 1) {
+            //传递的这个参数是非有效数字 或者参数+数组长度<0,(由于已经将参数+数组长度，判断arguments[0]<0即可）则返回原数组
+            if (isNaN(arguments[0]) || arguments[0] < 0) {
+                n = 0;
+                l = this.length;
+            }
+            //传递的这个参数大于等于0(0 <= arguments[0])参数大于数组长度也没有关系，for循环中i>this.length，for循环里语句就不用执行了
+            else {
+                n = arguments[0];
+                l = this.length;
+            }
+        }
+        //第三种情况 传递了两个参数(arguments.length === 2)
+        else {
+            //1、传递两个参数 第一个是无效数字 会把第一个参数当做0处理
+            if (isNaN(arguments[0])) {
+                //第二个参数也是无效数字或者arguments[1]<0(即此时的第二个参数+数组长度<0)返回一个空数组
+                if (isNaN(arguments[1]) || arguments[1] < 0) {
+                    n = 0;
+                    l = 0;
+                }
+                //如果第二个参数大于数组长度
+                /*问题：如果将这种情况放在下面的else之后，则即使第二个参数大于数组长度，也不执行这个条件中的语句，仍然按照0 <= arguments[1] <= this.length执行*/
+                else if (arguments[1] > this.length) {
+                    n = 0;
+                    l = this.length;
+                }
+                //第二个参数是有效数数字 大于等于0的情况 (0 <= arguments[1] <= this.length)
+                else {
+                    n = 0;
+                    l = arguments[1];
+                }
+            }
+            //2、以下情况传递的两个参数都是有效数字
+            //传递的两个参数相等 或者arguments[0]>= arguments[1] 返回空数组
+            else if (arguments[0] >= arguments[1]) {
+                n = 0;
+                l = 0;
+            }
+            //第一个参数+数组长度<=0  第二个参数长度小于等于数组长度
+            else if (arguments[0] <= 0 && arguments[1] <= this.length) {
+                n = 0;
+                l = arguments[1];
+            }
+            //第一个参数+数组长度<=0  第二个参数长度大于数组长度
+            else if (arguments[0] <= 0 && arguments[1] >= this.length) {
+                n = 0;
+                l = this.length;
+            }
+            //第一个参数+数组长度>0  第二个参数长度小于等于数组长度
+            else if (arguments[0] > 0 && arguments[1] <= this.length) {
+                n = arguments[0];
+                l = arguments[1];
+            }
+            //第一个参数+数组长度>0  第二个参数长度大于数组长度
+            else if (arguments[0] > 0 && arguments[1] > this.length) {
+                n = arguments[0];
+                l = this.length;
+            }
+        }
+        for (var i = n; i < l; i++) {
+            ary.push(this[i]);
+        }
+        return ary;
+    }
+    var ary = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    //console.log(ary.mySlice(-2));
+    /*console.log(ary.mySlice(9, 8));
+     console.log(ary.mySlice(4, -6));
+     console.log(ary.slice(9, 8));
+     console.log(ary.slice(4, -6));*/
+    /*console.log(ary.mySlice(-12,8));
+     console.log(ary.slice(-12, 8));
+     console.log(ary.mySlice(-12,10));
+     console.log(ary.slice(-12, 10));
+     console.log(ary.mySlice(3,8));
+     console.log(ary.slice(3, 8));
+     console.log(ary.mySlice(5,10));
+     console.log(ary.slice(5, 10));*/
+
+</script>
+</body>
+</html>

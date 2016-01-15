@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    实现一个加减链式操作
+
+
+    Number.prototype.plus=function(num1){
+        var num1=Number(num1);
+        var result=this+num1;//this指的当前操作的数字
+        return Number(result);
+    }
+    var num=1;
+
+    Number.prototype.minus=function(num2){
+        var num2=Number(num2);
+        var result=this-num2;
+        return  Number(result);
+    }
+console.log(num.plus(-3).minus(-1));
+</script>
+</body>
+</html>
