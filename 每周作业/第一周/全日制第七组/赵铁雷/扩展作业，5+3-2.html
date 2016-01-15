@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    Number.prototype.plus = function plus(m) {
+        var total = null;
+        var cur = Number(m);
+        if (!isNaN(this) && !isNaN(cur)) {
+            total = this + cur;
+        }
+        return total;
+    };
+    Number.prototype.minus = function minus(n) {
+        var total = null;
+        var cur = Number(n);
+        if (!isNaN(this) && !isNaN(cur)) {
+            total = this - cur;
+        }
+        return total;
+    };
+    console.log((5).plus(3).minus(2));
+
+
+</script>
+</body>
+</html>
