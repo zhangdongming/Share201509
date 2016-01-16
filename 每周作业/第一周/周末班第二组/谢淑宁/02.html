@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		链式写法
+		实现 (5).plus(3).minus(2) ->5+3-2
+		Number.prototype.plus...
+		Number.prototype.minus...
+		<script>
+			Number.prototype.Plus=function(num){
+				return this+num;
+			}
+			Number.prototype.Minus=function(num){
+				return this-num;
+			}
+			var a = 3333333;
+			console.log((a).Plus(5).Minus(2));		
+		</script>
+	</body>
+</html>
