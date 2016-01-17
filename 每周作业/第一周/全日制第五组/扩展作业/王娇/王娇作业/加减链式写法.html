@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    //加法->plus
+    Number.prototype.plus = function plus(m) {
+        var a = this;
+        if (a == undefined || m == undefined) {
+            return NaN;
+        }
+        if(typeof (a) === "number" && typeof (m) === "number"){
+            a += m;
+            return a;
+        }
+        if (typeof (a) === "number" && typeof (m) === "boolean") {
+            a += Number(m);
+            return a;
+        }
+        if (typeof (m) === "number" && typeof (a) === "boolean") {
+            var a1 = Number(a);
+            a1 += m;
+            return a;
+        }
+        if (typeof (a) !== "number" || typeof (m) !== "number") {
+            a += m;
+            return a;
+        }
+    }
+    //减法->minus
+    Number.prototype.minus = function minus(n) {
+        var c = Number(this);
+        var n1=Number(n);
+        if (typeof (c) === "number"&&typeof (n1)==="number") {
+            c -= n1;
+            return c;
+        } else {
+            return NaN;
+        }
+    };
+    console.log((5).plus(2).minus(3))
+</script>
+</body>
+</html>
