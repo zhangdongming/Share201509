@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mySlice</title>
+</head>
+<body>
+	(原型链)
+   数组中有一个方法叫做slice,实现数组的查询:slice(n,m) slice(n) slice(0) slice() ...
+   一个slice很据传递的参数值的不一样可以实现很多种不同的操作，自己回去深入研究slice的不同操作:
+   1)一个参数都不传、传递一个参数值、传递两个参数值
+   2)参数传递的是负数、小数
+   3)n比m要大
+   ...
+   要求你们自己实现一个mySlice的方法(在内置的原型上),实现和内置slice一模一样的功能操作
+   Array.prototype.mySlice=function(){//this->当前要操作的数组}
+	<script>
+		var ary = new Array(6);
+		ary[0] = "George";
+		ary[1] = "John";
+		ary[2] = "Thomas";
+		ary[3] = "James";
+		ary[4] = "Adrew";
+		ary[5] = "Martin";
+		console.log(ary);
+
+		var Ary = new Array();
+		function array_positive_index(length,num){
+			num<0 ? num = length+num : num;
+			return num;
+		}
+		Array.prototype.mySlice=function(startNum,endNum){
+			if(typeof startNum=='undefined'){
+				Ary = this;				
+			}else if( (startNum==0 || startNum) && typeof endNum=='undefined'){
+				startNum = array_positive_index(this.length,startNum);
+				for(var i=startNum; i<this.length; i++){
+					Ary.push(this[i]);
+				}
+			}else if( (startNum==0 || startNum) && (endNum==0 || endNum)){			
+				startNum = array_positive_index(this.length,startNum);
+				endNum = array_positive_index(this.length,endNum);
+				if( startNum>this.length || endNum>this.length || startNum>endNum){
+					//console.log('44');
+					Ary = [];
+				}else{
+					for(var i=startNum; i<endNum; i++){
+						Ary.push(this[i]);
+					}
+				}
+			}
+			return Ary;			
+		}
+		console.log(ary.mySlice(3,0));
+
+
+	</script>
+
+   </script>
+</body>
+</html>
