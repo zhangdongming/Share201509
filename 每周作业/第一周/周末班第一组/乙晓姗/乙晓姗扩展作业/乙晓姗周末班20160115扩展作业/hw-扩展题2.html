@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    var num = 5;
+    var sumResult;
+    Number.prototype.plus = function (n) {
+        sumResult = this + n;
+        return this;
+    }
+    Number.prototype.minus = function (n) {
+        return sumResult - n;
+    }
+    console.log(num.plus(3).minus(-2));
+</script>
+</body>
+</html>

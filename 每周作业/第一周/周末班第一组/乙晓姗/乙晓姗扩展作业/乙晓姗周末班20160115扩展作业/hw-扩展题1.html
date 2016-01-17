@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<div id="tab">
+</div>
+<script type="text/javascript">
+    var ary = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    Array.prototype.mySlice = function mySlice() {
+        var obj = [];
+        var start = typeof arguments[0] === "string" ? 0 : Math.floor(arguments[0]);
+        var end = Math.floor(arguments[1]);
+        if (typeof arguments[0] === "undefined" && typeof arguments[1] === "undefined") {
+            return ary;
+        } else {
+            var startTwo = typeof arguments[0] === "string" ? 0 : Math.abs(start);  //20
+            var endTwo = Math.abs(end); //1
+            if (arguments.length == 1) {
+                if (arguments[0] < 0) {
+                    var startTwo = Math.abs(start);  //2
+                    if (startTwo > ary.length) {
+                        return ary;
+                    }
+                    ary.reverse();
+                    for (var i = 0; i < startTwo; i++) {
+                        var cur = this[i];
+                        obj.push(cur);
+                    }
+                    return obj.reverse();
+                } else {
+                    for (var i = arguments[0]; i < this.length; i++) {
+                        var cur = this[i];
+                        obj.push(cur);
+                    }
+                    return obj;
+                }
+            }
+            if (arguments[0] < 0 && arguments[1] < 0) {
+                if (arguments[0] < arguments[1]) {
+                    if (startTwo > ary.length && endTwo > ary.length) {
+                        return obj;
+                    }
+                    if (startTwo > ary.length) {
+                        ary.reverse();
+                        for (var i = endTwo; i < ary.length; i++) {
+                            var cur = this[i];
+                            obj.push(cur);
+                        }
+                        return obj.reverse();
+                    }
+                    ary.reverse();
+                    for (var i = endTwo; i < startTwo; i++) {
+                        var cur = this[i];
+                        obj.push(cur);
+                    }
+                    return obj.reverse();
+                } else {
+                    return obj;
+                }
+            } else {
+                //传进来的参数只要大于1 start就是arguments[0]，end就是arguments[1]
+                if (start > ary.length && end > ary.length) {
+                    return obj;
+                }
+                if (end > ary.length) {
+                    for (var i = start; i < ary.length; i++) {
+                        var cur = this[i];
+                        obj.push(cur);
+                    }
+                    return obj;
+                }
+                if (arguments[1] < 0) {
+                    ary.reverse();
+                    for (var i = endTwo; i < ary.length; i++) {
+                        var cur = this[i];
+                        obj.push(cur);
+                    }
+                    return obj.reverse();
+                } else {
+                    for (var i = start; i < end; i++) {
+                        var cur = this[i];
+                        obj.push(cur);
+                    }
+                    return obj;
+                }
+            }
+        }
+    }
+    var res = ary.mySlice(-2.5, 8);
+    console.log(res);
+//    负数小数点的有点问题
+</script>
+</body>
+</html>
