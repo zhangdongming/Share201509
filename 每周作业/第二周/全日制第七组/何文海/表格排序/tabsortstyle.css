@@ -1,0 +1,62 @@
+
+body, div, table, thead, th, tbody, tr, td {
+    margin: 0;
+    padding: 0;
+}
+
+#box {
+    margin: 10px auto;
+    padding: 0 0 10px 0;
+    width: 400px;
+    border: 1px solid #bbbbbe;
+    overflow: hidden;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius:5px;
+    -webkit-box-shadow: 3px 3px 4px 3px #f6f6f6;
+    -moz-box-shadow: 3px 3px 4px 3px #f6f6f6;
+    box-shadow: 3px 3px 4px 3px #f6f6f6;
+    font-family: "microsoft yahei";
+
+}
+
+#tab {
+    text-align: center;
+}
+
+#tab thead tr th {
+    width: 100px;
+    background: #5884b0;
+    color: #ffffff;
+    height: 35px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+#tab thead tr th {
+}
+
+.cur {
+    cursor: pointer;
+}
+
+#tab tbody tr td {
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+}
+
+#tab tbody tr.bg0 {
+}
+
+#tab tbody tr.bg1 {
+    background: #cbcbcb;
+}
+

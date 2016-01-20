@@ -1,0 +1,61 @@
+html, body, div, table, thead, th, tr, td {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+    -webkit-user-select:none;
+}
+
+ul, li {
+    list-style: none;
+}
+
+img {
+    border: 0;
+}
+
+.studentInfo {
+    margin: 30px auto;
+    padding: 10px;
+    width: 450px;
+}
+
+#tab {
+    width: 430px;
+    margin:0 auto;
+    border:0px solid #ddd;
+}
+#tab thead tr{
+    height:35px;
+    line-height:35px;
+    color:#fff;
+}
+#tab thead tr th{
+    background: #6aaed5;
+    width:100px;
+    text-align: center;
+}
+
+#tab thead tr th.cursor{
+    cursor:pointer;
+    transition:all .2s ease-in-out 0s;
+    -moz-transition: all .2s ease-in-out 0s;
+    -webkit-transition: all .2s ease-in-out 0s;
+}
+#tab thead tr th.cursor:hover{
+    text-decoration:underline;
+    background:#0085d2;
+}
+#tab tbody tr{
+    height:35px;
+    line-height:35px;
+    border-bottom: 1px solid #ddd;
+}
+#tab tbody tr.bg0{
+    background:#eef2f4;
+}
+#tab tbody tr.bg1{
+}
+#tab tbody tr td{
+    text-align:center;
+}
