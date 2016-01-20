@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>表格排序</title>
+    <style type="text/css">
+        body, div, table, thead, th, tbody, tr, td {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+        }
+
+        #box {
+            margin: 100px auto;
+            border: 1px solid green;
+            border-radius: 10px;
+            padding: 15px;
+            height: 200px;
+            width: 400px;
+            box-shadow: 5px 5px 10px lightgreen;
+        }
+
+        #tab thead th {
+            background: lightgreen;
+        }
+
+        #tab thead th, tbody tr {
+            height: 40px;
+            line-height: 40px;
+        }
+
+        #tab thead td, #tab tbody td {
+            width: 100px;
+            text-align: center;
+        }
+
+        #tab tbody tr.bg {
+            background: #ffe470;
+        }
+
+        .select {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <table id="tab" cellpadding="0" cellspacing="0">
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th class="select">年龄</th>
+            <th class="select">身高cm</th>
+            <th class="select">体重kg</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script charset="utf-8" type="text/javascript" src="json/json.js"></script>
+    <script charset="utf-8" type="text/javascript" src="js/utils.js"></script>
+    <script>
+        var oTab = document.getElementById("tab");
+        var tHead = oTab.tHead;
+        var tBody = oTab.tBodies[0];
+        var oRows = tBody.rows;
+        var oThs = tHead.rows[0].cells;
+        function bindData() {
+            var frg = document.createDocumentFragment();
+            for (var i = 0; i < jsonAry.length; i++) {
+                var cur = jsonAry[i];
+                var oTr = document.createElement("tr");
+                for (var key in cur) {
+                    var oTd = document.createElement("td");
+                    oTd.innerHTML = cur[key];
+                    oTr.appendChild(oTd);
+                }
+                frg.appendChild(oTr);
+            }
+            tBody.appendChild(frg);
+            frg = null;
+        }
+        bindData();
+
+        function changeBg() {
+            for (var i = 0; i < oRows.length; i++) {
+                oRows[i].className = i % 2 === 1 ? "bg" : null;
+            }
+        }
+        changeBg();
+
+        function sortList(n) {
+
+            var _this = this;
+            _this.flag *= -1;
+
+            for (var k = 0; k < oThs.length; k++) {
+                k !== n ? oThs[k].flag = -1 : null;
+            }
+
+            var ary = utils.listToArray(oRows);
+
+            ary.sort(function (a, b) {
+                var curIn = a.cells[n].innerHTML, nexIn = b.cells[n].innerHTML;
+                var curInNum = parseFloat(curIn), nexInNum = parseFloat(nexIn);
+                if (isNaN(curInNum) || isNaN(nexInNum)) {
+                    return (curIn.localeCompare(nexIn)) * _this.flag;
+                }
+                return (curInNum - nexInNum) * _this.flag;
+            });
+
+            var frg = document.createDocumentFragment();
+            for (var i = 0; i < ary.length; i++) {
+                frg.appendChild(ary[i]);
+            }
+            tBody.appendChild(frg);
+            frg = null;
+
+            changeBg();
+        }
+
+        for (var i = 0; i < oThs.length; i++) {
+            var curTh = oThs[i];
+            if (curTh.className === "select") {
+                curTh.flag = -1;
+                curTh.index = i;
+                curTh.onclick = function () {
+                    sortList.call(this, this.index);
+                }
+            }
+        }
+
+    </script>
+</div>
+</body>
+</html>

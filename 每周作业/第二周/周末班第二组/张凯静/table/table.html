@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    body, div, table, thead, tbody, tr, th, td {margin: 0;padding: 0;font-family: "Microsoft Yahei";font-size: 14px;-webkit-user-select: none;  }
+    .box {margin: 10px auto;padding: 20px;width: 400px;border: 1px solid #008000;border-radius: 10px;box-shadow: 3px 3px 10px 0 #999;  }
+    #tab thead tr, #tab tbody tr {height: 35px;line-height: 35px;}
+    #tab thead tr {background: blue;  color: #fff;}
+    #tab tbody tr.bg {background: pink;}
+    #tab thead tr th, #tab tbody tr td {width: 100px;text-align: center;}
+    #tab thead tr th.cursor {cursor: pointer;}
+    </style>
+</head>
+<body>
+<div class="box">
+    <table id="tab" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th class="cursor">姓名</th>
+            <th class="cursor">年龄</th>
+            <th class="cursor">武力</th>
+            <th class="cursor">性别</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<script charset="utf-8" type="text/javascript" src="js/json-sort.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/utils.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/tab.js"></script>
+</body>
+</html>
