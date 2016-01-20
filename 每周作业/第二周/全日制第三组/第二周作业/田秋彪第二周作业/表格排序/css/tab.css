@@ -1,0 +1,55 @@
+html,body,div,table,thead,tbody,tr,th,td{
+    margin:0;
+    padding:0;
+    text-align: center;
+}
+#box{
+    margin:0 auto;
+    margin-top:50px;
+    padding:15px;
+    width:400px;
+    border:1px solid #ccc;
+    border-radius: 5px;
+
+}
+#tab{
+    width:370px;
+    line-height: 30px ;
+    border:1px solid #c8c8c8;
+}
+.cursor{
+    cursor: pointer;
+}
+thead{
+    height:30px;
+    line-height:30px;
+
+    background:green;
+    color: #ffffff;
+
+}
+
+th{
+    width: 80px;
+    height:30px;
+    line-height:30px;
+}
+.c0{
+
+}
+.c1{
+    background: orange;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
