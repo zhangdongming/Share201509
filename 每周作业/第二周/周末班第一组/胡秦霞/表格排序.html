@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body, ul, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #ul1 {
+            margin:50px auto;
+            width: 200px;
+            background:#ccc;
+            border:1px solid #ddd;
+            border-radius:5px;
+            box-shadow:5px 5px 10px #999;
+        }
+
+        #ul1 li {
+             height: 35px;
+            line-height: 35px;
+            border-bottom: 1px dashed #ddd;
+			text-align:center;
+        }
+		#ul1 li.frist{
+		 	cursor: pointer;
+			}
+		#ul1 li:last-child{
+			border-bottom:none;
+			}
+    </style>
+</head>
+<body>
+<ul id="ul1">
+	<li class="frist">javascript</li>
+    <li>98</li>
+    <li>99</li>
+    <li>96</li>
+    <li>95</li>
+    <li>90</li>
+</ul>
+
+<script charset="utf-8" type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oUl = document.getElementById("ul1"); 
+	var oLis = oUl.getElementsByTagName("li");
+    var ary = utils.listToArray(oLis);
+    ary.sort(function (a, b) {
+        return parseFloat(a.innerHTML) - parseFloat(b.innerHTML);
+    });
+    for (var i = 0; i < ary.length; i++) {
+        oUl.appendChild(ary[i]);
+    }
+</script>
+</body>
+</html>
