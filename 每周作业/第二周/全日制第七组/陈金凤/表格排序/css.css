@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#tab{
+    width: 400px;
+    margin: 20px auto;
+    border: 1px solid #3a3a3a;
+    box-shadow: 10px 8px 10px #bcbcbc;
+    background-image: url("1.png");
+    border-radius: 8px;
+}
+#tab table thead th {
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    /*background-color: aqua;*/
+    font-size: 20px;
+    color: #202020;
+    padding: 4px;
+    border-bottom: 1px solid #0e36b7;
+}
+#tab table thead th:hover{
+    background-image: url("3.jpg");
+    font-size: 24px;
+    color: white;
+}
+#tab table tbody td{
+    height: 37px;
+    line-height: 37px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px dashed ;
+}
+#tab table tbody tr:hover{
+    background-color:#edfc99;
+}
+#tab table tbody td:hover{
+    font-size: 20px;
+    color: #262626;
+}
+.cursor{
+    cursor: pointer;
+}
+/*.bg1{*/
+    /*background-color: #d3fc99;*/
+/*}*/
+/*.bg0{*/
+    /*background-color: #edfc99;*/
+/*}*/
