@@ -1,0 +1,52 @@
+body, div, table, thead, tbody, tr, th, td {
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+}
+body {
+    background: url("../bg.jpg") no-repeat;
+    background-size: cover;
+}
+.wrapper {
+    margin: 140px auto;
+    width: 540px;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #008000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0 #999;
+}
+
+table {
+    width: 500px;
+    background: rgba(255,255,255,0.8);
+}
+
+th {
+    background: #008000;
+    color: #FFFFFF;
+}
+
+tbody {
+    color: #000000;
+}
+
+tr {
+    text-align: center;
+}
+
+th, td {
+    padding: 10px 0;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.cursor:hover {
+    background: #009000;
+}
+
+.bg {
+    background: rgba(100, 255, 114, 0.35);
+}
