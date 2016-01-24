@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+            text-align: center;
+            font-family: 微软雅黑;
+        }
+        #tab{
+            margin: 10px auto;
+            padding: 10px;
+            width: 400px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            box-shadow:3px 3px 10px 0 #999;
+        }
+        #tab thead tr{
+            height: 30px;
+            line-height: 30px;
+            background: #dddddd;
+        }
+        #tab tbody tr{
+            height: 30px;
+            line-height: 30px;
+        }
+        #tab tbody tr.bg1{
+            background-color: yellow;
+        }
+        #tab tbody tr.bg0{
+            background-color: #b3d4fc;
+        }
+        #tab thead tr .curcor{
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+<table id="tab" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <th class="curcor">姓名</th>
+        <th class="curcor">年龄</th>
+        <th class="curcor">分数</th>
+        <th>性别</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr>-->
+        <!--<td>haha</td>-->
+        <!--<td>1</td>-->
+        <!--<td>1</td>-->
+        <!--<td>1</td>-->
+    <!--</tr>-->
+    </tbody>
+</table>
+<script type="text/javascript" src="json.js"></script>
+<script type="text/javascript">
+    var oTab = document.getElementById("tab");
+    var tHead = oTab.tHead;
+    var tBody = oTab.tBodies[0];
+    var oThs = tHead.rows[0].cells;
+    var oTrs = tBody.rows;
+
+    function bingData(){
+        var str = document.createDocumentFragment();
+        for(var i = 0;i<jsonAry.length;i++){
+          var cur = jsonAry[i];
+            cur.sex = (cur.sex==1?"男":"女")
+            var oTr = document.createElement("tr");
+            for(var key in cur){
+
+                var oTd = document.createElement("td");
+                oTd.innerHTML = cur[key];
+                oTr.appendChild(oTd);
+            }
+            str.appendChild(oTr)
+        }
+        tBody.appendChild(str)
+        str = null
+    }
+    bingData();
+
+function bgChange(){
+    for(var i = 0;i<oTrs.length;i++){
+       oTrs[i].className="bg"+(i%2)
+    }
+}
+bgChange()
+
+    function sortList(n){
+       var _this = this;
+        _this.flag*=-1
+        for(var j = 0;j<oThs.length;j++){
+            if(j!==n){
+                oThs[j].flag=-1
+            }
+        }
+        var ary = Array.prototype.slice.call(oTrs)
+        ary.sort(function(a,b) {
+            var curIn = a.cells[n].innerHTML;
+            var nexIn = b.cells[n].innerHTML;
+            var newcur = parseFloat(curIn)
+            var newnex = parseFloat(nexIn)
+            if(isNaN(newcur)||isNaN(newnex)){
+               return (curIn.localeCompare(nexIn))*_this.flag
+            }
+            return (newcur - newnex)*_this.flag
+        })
+        var frg = document.createDocumentFragment()
+        for(var i = 0;i<ary.length;i++){
+            frg.appendChild(ary[i])
+        }
+        tBody.appendChild(frg)
+        frg = null
+        bgChange()
+
+    }
+
+    for(var i = 0;i<oThs.length;i++){
+        var ocur = oThs[i];
+        if(ocur.className=="curcor"){
+            ocur.flag = -1;
+            ocur.index = i;
+            ocur.onclick = function(){
+                sortList.call(this,this.index)
+            }
+
+        }
+
+    }
+
+</script>
+
+
+</body>
+</html>

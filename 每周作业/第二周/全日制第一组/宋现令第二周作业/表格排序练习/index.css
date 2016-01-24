@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    -webkit-user-select: none;
+}
+#div1{
+    width: 400px;
+    border: 1px solid #fa8417;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 0 #37ee85;
+    margin: 30px auto;
+    padding: 20px;
+}
+#div1 #tab{
+    color: #e1c623;
+}
+#tab thead th{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    background: #7c2a3b;
+}
+#tab tbody tr td{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+#tab tbody tr.bg1{
+    background: #0dad51;
+}
+#tab tbody tr.bg0{
+
+}
