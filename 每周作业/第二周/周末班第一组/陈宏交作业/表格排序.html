@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="table.css"/>
+</head>
+<body>
+<div class="box">
+    <table id="tab" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th class="cursor">姓名</th>
+            <th class="cursor">年龄</th>
+            <th class="cursor">武力</th>
+            <th class="cursor">性别</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+<script charset="utf-8" type="text/javascript" src="json-sort.js"></script>
+<script charset="utf-8" type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    //1、获取要操作的元素
+    var oTab = document.getElementById("tab");
+    var tHead = oTab.tHead;
+    var tBody = oTab.tBodies[0];
+    var oRows = tBody.rows;
+    var oThs = tHead.rows[0].cells;
+
+    //2、实现数据绑定
+    function bindDate() {
+        var frg = document.createDocumentFragment();
+        for (var i = 0; i < jsonAry.length; i++) {
+            var cur = jsonAry[i];
+            cur.sex = (cur.sex == 1) ? "男" : "女";
+            var oTr = document.createElement("tr");
+            for (var key in cur) {
+                var oTd = document.createElement("td");
+                oTd.innerHTML = cur[key];
+                console.log(cur[key]);
+                oTr.appendChild(oTd);
+            }
+            frg.appendChild(oTr);
+        }
+        tBody.appendChild(frg);
+        frg = null;
+    }
+    bindDate();
+
+    //3、隔行变色
+    function changebg() {
+        for (var i = 0; i < oRows.length; i++) {
+            oRows[i].className = i % 2 === 1 ? "bg" : null;
+        }
+    }
+    changebg();
+
+    //4、按照武力值从小到大进行排序
+
+    function sortList(n) {
+//        oThs[2].flag *= -1;//每一次执行sortList都让flag*=-1；
+        var _this = this;
+        _this.flag *= -1;
+        //我们点击当前列,其他列目前都是按照乱序排的,为了让下一次再点击的时候还是从升序开始,我们让除了当前列的其他列的flag都回归初始值-1 ->n是当前列的索引
+        for (var k = 0; k < oThs.length; k++) {
+            k !== n ? oThs[k].flag = -1 : null;
+        }
+
+
+        //1)把存储所有行的类数组转化为数组
+        var ary = utils.listToArray(oRows);
+
+        //2)将数组进行排序
+        ary.sort(function (a, b) {
+            var curIn = a.cells[n].innerHTML, curNext = b.cells[n].innerHTML;
+            var curInNum = parseFloat(curIn), curNextNum = parseFloat(curNext);
+            if (isNaN(curInNum) || isNaN(curNextNum)) {
+                return (curIn.localeCompare(curNext)) * _this.flag;
+            }
+            return (curInNum - curNextNum) * _this.flag;
+        });
+
+        //3)按照最新的顺序重新放回到页面中
+        var frg = document.createDocumentFragment();
+        for (var i = 0; i < ary.length; i++) {
+            frg.appendChild(ary[i]);
+        }
+        tBody.appendChild(frg);
+        frg = null;
+        changebg();
+
+    }
+    //    changeBg();
+    //5、绑定点击事件
+    for (var i = 0; i < oThs.length; i++) {
+        var curTh = oThs[i];
+        if (curTh.className == "cursor") {
+            curTh.flag = -1;
+            curTh.index = i;
+            curTh.onclick = function () {
+                sortList.call(this, this.index);
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>

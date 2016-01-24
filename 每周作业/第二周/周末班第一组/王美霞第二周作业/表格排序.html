@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table, tr, th, td {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 500px;
+            margin: 20px auto;
+        }
+
+        td, th {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <th>姓名</th>
+    <th>数学</th>
+    <th>语文</th>
+    <th>英语</th>
+    <th>体育</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>袁梦迪</td>
+        <td>67</td>
+        <td>88</td>
+        <td>78</td>
+        <td>90</td>
+    </tr>
+    <tr>
+        <td>王美霞</td>
+        <td>77</td>
+        <td>98</td>
+        <td>68</td>
+        <td>86</td>
+    </tr>
+    <tr>
+        <td>马艳华</td>
+        <td>97</td>
+        <td>78</td>
+        <td>98</td>
+        <td>46</td>
+    </tr>
+    <tr>
+        <td>刘杠</td>
+        <td>91</td>
+        <td>46</td>
+        <td>68</td>
+        <td>96</td>
+    </tr>
+    <tr>
+        <td>张宝龙</td>
+        <td>57</td>
+        <td>79</td>
+        <td>78</td>
+        <td>49</td>
+    </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+    var oTable = document.getElementsByTagName('table').item(0);
+    var oThead = oTable.tHead;
+    var oTbody = oTable.tBodies.item(0);
+    var oThs = oThead.getElementsByTagName('th');
+    var oRows = oTbody.rows;
+    var aryRows = listToArray(oRows);
+    for (var i = 0; i < oThs.length; i++) {
+        (function (i) {
+            oThs[i].onclick = function () {
+                rowSort(i, this);
+            }
+        })(i);
+    }
+    function listToArray(likeAry) {
+        var ary = [];
+        try {
+            ary = Array.prototype.slice.call(null, likeAry);
+        } catch (e) {
+            for (var i = 0; i < likeAry.length; i++) {
+                ary[ary.length] = likeAry[i];
+            }
+        }
+        return ary;
+    }
+    function rowSort(i, key) {
+        if (key.flag) {
+            key.flag *= -1;
+        } else {
+            key.flag = 1;
+        }
+        aryRows.sort(function (a, b) {
+            if (Number(a.cells[i].innerHTML)) {
+                return key.flag * (a.cells[i].innerHTML - b.cells[i].innerHTML);
+            } else {
+                return key.flag * (a.cells[i].innerHTML.localeCompare(b.cells[i].innerHTML));
+            }
+        });
+        for (var j = 0; j < aryRows.length; j++) {
+            oTbody.appendChild(aryRows[j]);
+        }
+    }
+</script>
+</body>
+</html>
