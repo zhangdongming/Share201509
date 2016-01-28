@@ -1,0 +1,49 @@
+body,div,table,thead,tbody,tr,th,td{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei", Arial, SimSun;
+}
+img{
+  margin-left: 216px;
+    margin-top: 17px;
+}
+.box{
+    position: absolute;
+    top: 231px;
+    left: 534px;
+    border-radius: 10px;
+    border: 1px solid green;
+    box-shadow: 3px 3px 10px palevioletred;
+    background-color: papayawhip;
+}
+#tab{
+    padding: 20px;
+    width: 400px;
+}
+#tab thead tr{
+     height: 35px;
+    line-height: 35px;
+    background-color: palegreen;
+}
+#tab thead tr th{
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+}
+#tab tbody tr{
+    height: 30px;
+    line-height: 30px;
+}
+#tab tbody tr.bg0{
+
+}
+#tab tbody tr.bg1{
+    background-color: powderblue;
+}
+#tab tbody tr td{
+    border-radius: 50%;
+    text-align: center;
+    width: 100px;
+}

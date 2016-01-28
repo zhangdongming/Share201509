@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        @charset "utf-8";
+        body, div, table, thead, tbody, tr, th, td {
+            margin: 0;
+            padding: 0;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+            font-size: 14px;
+            -webkit-user-select: none;
+        }
+
+        .box {
+            margin: 10px auto;
+            padding: 20px;
+            width: 400px;
+            border: 1px solid gray;
+            border-radius: 10px;
+            box-shadow: 3px 3px 10px 0 #999;
+        }
+
+        #tab thead tr, #tab tbody tr {
+            height: 35px;
+            line-height: 35px;
+        }
+
+        #tab thead tr {
+            background: lightpink;
+            color: #fff;
+        }
+
+        #tab tbody tr.bg {
+            background: #ffe470;
+        }
+        #tab tbody td.bg {
+            color:red;
+        }
+
+        #tab thead tr th, #tab tbody tr td {
+            width: 100px;
+            text-align: center;
+            border: 1px solid gray;
+        }
+
+        #tab thead tr th.cursor {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <table id="tab" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <!--想让谁排序就给谁加class="cursor"-->
+            <th>姓名</th>
+            <th class="cursor">语文</th>
+            <th class="cursor">数学</th>
+            <th class="cursor">平均分</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--实现奇数偶数行变色,只需让偶数行的class='bg'-->
+        <!--<tr>
+            <td>令狐冲</td>
+            <td>24</td>
+            <td>98</td>
+            <td>男</td>
+        </tr>
+        <tr class="bg">
+            <td>令狐冲</td>
+            <td>24</td>
+            <td>98</td>
+            <td>男</td>
+        </tr>-->
+        </tbody>
+    </table>
+</div>
+<script charset="utf-8" type="text/javascript" src="json/json-hw.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/utils.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/hw-table.js"></script>
+</body>
+</html>

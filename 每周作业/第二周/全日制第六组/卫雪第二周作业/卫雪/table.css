@@ -1,0 +1,38 @@
+body, div, thead, tbody, tr, th, td {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+#box {
+    width: 400px;
+    margin: 20px auto;
+    padding: 30px;
+    border: 2px solid hotpink;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0 dimgrey;
+}
+
+#tab thead tr {
+    height: 30px;
+    line-height: 30px;
+    background: pink;
+    color: lightgoldenrodyellow;
+}
+
+#tab thead tr th {
+    width: 100px;
+}
+
+#tab tbody tr td {
+    text-align: center;
+}
+
+#tab tbody .bg0 {
+    background: 0;
+}
+
+#tab tbody .bg1 {
+    background: papayawhip;
+}

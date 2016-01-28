@@ -1,0 +1,32 @@
+body,div,thead,tr,th,tbody,td{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    -webkit-user-select: none;
+}
+#tab{
+    width: 400px;
+    margin: 20px auto;
+    border: 1px solid green;
+    padding:10px;
+    border-radius: 10px;
+}
+#tab thead tr,#ta tbody tr{
+    height: 20px;
+    line-height: 20px;
+}
+#tab thead tr{
+     background-color: deepskyblue;
+ }
+#tab thead tr th{
+    text-align: center;
+}
+#tab tbody tr td{
+    text-align: center;
+}
+#tab thead tr th.cursor{
+    cursor: pointer;
+}
+#tab tbody tr.bg{
+    background-color: yellowgreen;
+}

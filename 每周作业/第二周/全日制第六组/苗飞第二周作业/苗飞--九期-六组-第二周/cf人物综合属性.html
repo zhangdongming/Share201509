@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表格排序</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background: #333;
+        }
+
+        #box{
+            width: 500px;
+            margin: 40px auto;
+            border: 2px dotted peru;
+            padding: 60px 20px 20px 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px 0 #999999;
+            font-family: "楷体";
+            font-weight: bold;
+            font-size: 20px;
+            background: peru;
+            position: relative;
+        }
+        table{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            border-collapse: collapse;
+
+        }
+        thead th{
+            cursor: pointer;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: goldenrod;
+            background-color: rgba(0,0,0,0.7);
+        }
+        tbody td{
+            background-color: rgba(0,0,0,0.2);
+            text-align: center;
+            height: 35px;
+            line-height: 35px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 18px;
+
+        }
+        tbody tr:hover{
+            background: rgba(0,0,0,0.7);
+        }
+        tbody tr:hover td{
+            color: gold;
+            font-style: italic;
+
+        }
+        img{
+            display: none;
+            height: 455px;
+            width: 500px;
+        }
+      .select{
+          display: block;
+      }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <img class="select" src="img/cf1.jpg" alt=""/>
+    <img src="img/c1.jpg" alt=""/>
+    <img src="img/c2.jpg" alt=""/>
+    <img src="img/c3.png" alt=""/>
+    <img src="img/c4.jpg" alt=""/>
+    <img src="img/c5.jpg" alt=""/>
+    <img src="img/c6.jpg" alt=""/>
+    <img src="img/c7.jpg" alt=""/>
+    <img src="img/c8.jpg" alt=""/>
+    <img src="img/c9.jpg" alt=""/>
+    <img src="img/c10.jpg" alt=""/>
+    <table id="tab">
+        <thead>
+        <tr>
+            <th>角色</th>
+            <th>攻击</th>
+            <th>防御</th>
+            <th>跳跃</th>
+            <th>性别</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<script charset="utf-8" type="text/javascript" src="bg.js"></script>
+<script>
+    var oTab=document.getElementById("tab");
+    var tHead=oTab.tHead;
+    var tBody=oTab.tBodies[0];
+    var oThs=tHead.rows[0].cells;
+    var oTds=tBody.rows;
+
+    function fn(ary){
+        var cur = []
+        try {
+            cur = Array.prototype.slice.call(ary);
+        }
+        catch (e) {
+            for (var i = 0; i < likeAry.length; i++) {
+                cur.push(ary[i])
+            }
+        }
+        return cur;
+    }
+
+    function bd(){
+        var frg=document.createDocumentFragment();
+        for(var i=0;i<jsonAry.length;i++){
+            var cur=jsonAry[i]
+            cur.sex = cur.sex === 0 ? "男" : "女";
+            var tr=document.createElement("tr")
+            for(var key in  cur){
+                var td=document.createElement("td")
+                td.innerHTML=cur[key]
+                tr.appendChild(td)
+            }
+            frg.appendChild(tr)
+        }
+        tBody.appendChild(frg)
+        frg=null
+    }
+    bd()
+
+    function gh(){
+        for(var i=0;i<oTds.length;i++){
+            var cur=oTds[i]
+            cur.className="bg"+i%2
+        }
+    }
+    gh()
+ var ary=fn(oTds)
+    function px(x){
+        for(var k=0;k<oThs.length;k++){
+            if(k!=x){
+                oThs[k].zhufeng=-1
+            }
+        }
+        var this1=this
+        this1.zhufeng*=-1
+        ary.sort(function(a,b){
+            var m= a.cells[x].innerHTML
+            var n= b.cells[x].innerHTML
+            if(isNaN(m)&&isNaN(n)){
+                return (m.localeCompare(n))*this1.zhufeng
+            }
+            return(m-n)*this1.zhufeng
+        })
+        var flag=document.createDocumentFragment()
+        for(var i=0;i<ary.length;i++){
+            flag.appendChild(ary[i])
+        }
+        tBody.appendChild(flag)
+        gh()
+    }
+    for(var i=0;i<oThs.length;i++){
+        var Cur=oThs[i]
+        Cur.zhufeng=-1
+        Cur.index1=i
+        Cur.onclick=function(){
+            px.call(this,this.index1)
+    }
+    }
+
+    var oDiv=document.getElementById("box")
+    var oIm=oDiv.getElementsByTagName("img")
+    console.log(oIm)
+function a() {
+    var i = 0;
+   return function b() {
+        i++;
+        if (i >= oIm.length || j >= oIm.length) {
+            i = 0;
+            j = 0;
+        }
+        for (var j = 0; j < oIm.length; j++) {
+            oIm[j].className = "";
+        }
+        oIm[i].className = "select";
+    }
+}
+var c = a();
+window.setInterval(function () {c()}, 1000)
+
+
+
+
+
+</script>
+</body>
+</html>
