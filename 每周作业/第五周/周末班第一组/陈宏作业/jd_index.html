@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "microsoft yahei", arial;
+            font-size: 14px;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        img {
+            display: block;
+            border: none;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        a:link, a:visited, a:hover, a:active, a:target {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .wrapper {
+            margin: 20px auto;
+            width: 1210px;
+            overflow: hidden;
+        }
+
+        .left-category {
+            position: relative;
+            float: left;
+            /*overflow: hidden;*/
+            width: 210px;
+        }
+
+        .category {
+            background-color: #c81623;
+            height: 454px;
+            overflow: hidden;
+        }
+
+        .category li {
+            height: 31px;
+            overflow: hidden;
+        }
+        .category li.current{
+            background-color: #f7f7f7;
+
+        }
+        .category li.current a{
+            color: #B61B1F;
+        }
+        .category li a {
+            color: #fff;
+            padding: 0 20px;
+            line-height: 31px;
+        }
+
+        .category li a:hover {
+            background-color: #f7f7f7;
+            color: #B61B1F;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 210px;
+            width: 900px;
+            height: 500px;
+            z-index: 3;
+        }
+
+        .dropdown {
+            background-color: #f7f7f7;
+        }
+
+        .dropdown li {
+            float: left;
+        }
+
+        .dropdown li a {
+            float: left;
+            color: #333;
+            margin: 0 10px;
+        }
+
+        /*banner*/
+        .banner {
+            position: relative;
+            float: left;
+            margin: 0 10px;
+            width: 730px;
+            height: 454px;
+            overflow: hidden;
+        }
+
+        .banner .inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3650px;
+            overflow: hidden;
+        }
+
+        .banner .inner li {
+            float: left;
+            width: 730px;
+        }
+
+        .banner .tip {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -100px;
+            width: 200px;
+            overflow: hidden;
+        }
+
+        .banner .tip li {
+            display: inline-block;
+            float: left;
+            margin: 0 2px;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            color: #fff;
+            font-size: 10px;
+            line-height: 18px;
+            text-align: center;
+            background-color: #3E3E3E;
+            cursor: pointer;
+        }
+
+        .banner .tip li.current {
+            background-color: #B61B1F;
+        }
+
+        .banner .btn {
+            display: none;
+
+        }
+
+        .banner .btn a {
+            position: absolute;
+            top: 50%;
+            margin-top: -22.5px;
+            width: 30px;
+            height: 45px;
+            background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;
+            text-align: center;
+            line-height: 45px;
+
+        }
+
+        .banner .btn a.btnLeft {
+            left: 0;
+        }
+
+        .banner .btn a.btnRight {
+            right: 0;
+        }
+
+        .banner .btn a:hover {
+            background: rgba(0, 0, 0, 1) none repeat scroll 0 0;
+        }
+    </style>
+</head>
+<body style="background-color: #f00fff;">
+<div class="wrapper">
+    <div class="left-category">
+        <ul class="category" id="category">
+            <li class="item "><a href="#">家用电器</a></li>
+            <li class="item"><a href="#">手机、数码、京东通信</a></li>
+            <li class="item"><a href="#">电脑、办公</a></li>
+            <li class="item"><a href="#">家居、家具、家装、厨具</a></li>
+            <li class="item"><a href="#">男装、女装、内衣、珠宝</a></li>
+            <li class="item"><a href="#">个护化妆、清洁用品</a></li>
+            <li class="item"><a href="#">鞋靴、箱包、钟表、奢侈品</a></li>
+            <li class="item"><a href="#">运动户外</a></li>
+        </ul>
+        <div class="dropdown" id="dropDown">
+            <ul class="drop-detail" id="dropDetail">
+                <li class="item-sub current">
+                    家用电器
+                </li>
+                <li class="item-sub">手机、数码、京东通信</li>
+                <li class="item-sub">电脑、办公</li>
+                <li class="item-sub">家居、家具、家装、厨具</li>
+                <li class="item-sub">男装、女装、内衣、珠宝</li>
+                <li class="item-sub">个护化妆、清洁用品</li>
+                <li class="item-sub">鞋靴、箱包、钟表、奢侈品</li>
+                <li class="item-sub">运动户外</li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner" id="banner">
+        <ul class="inner" id="inner">
+            <li><a href="#"><img src="images/banner01.jpg" alt="111"/></a></li>
+            <li><a href="#"><img src="images/banner02.jpg" alt="111"/></a></li>
+            <li><a href="#"><img src="images/banner03.jpg" alt="111"/></a></li>
+            <li><a href="#"><img src="images/banner04.jpg" alt="111"/></a></li>
+            <li><a href="#"><img src="images/banner01.jpg" alt="111"/></a></li>
+        </ul>
+        <ul class="tip" id="tip">
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div class="btn" id="btn">
+            <a href="javascript:;" class="btnLeft" id="btnLeft"><</a>
+            <a href="javascript:;" class="btnRight" id="btnRight">></a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/animate.js"></script>
+<script type="text/javascript">
+    (function () {
+        //二级菜单
+        //获取要操作的元素
+        var category = document.getElementById("category"), categoryList = category.getElementsByTagName("li"), dropDown = document.getElementById("dropDown"), dropDetail = document.getElementById("dropDetail"), dropDetailList = dropDetail.getElementsByTagName("li");
+
+
+        //事件委托实现
+        document.body.onmouseover = function (e) {
+            e = e || window.event;
+            e.target = e.target || e.srcElement;
+            console.log(e.target);
+            if(e.target.tagName.toLowerCase()==="a"|| e.target.parentNode.tagName.toLowerCase()==="li"|| e.target.id=="dropDown"){
+                dropDown.style.display="block";
+                if(e.target.tagName.toLowerCase()==="a"&& e.target.parentNode.tagName.toLowerCase()==="li"){
+                    e.target.parentNode.className="current";
+                }
+                return;
+            }
+
+            dropDown.style.display="none";
+        };
+
+
+        //获取要操作的元素
+        var banner = document.getElementById("banner"), inner = document.getElementById("inner"), tip = document.getElementById("tip"), tipList = tip.getElementsByTagName("li"), btn = document.getElementById("btn"), btnLeft = document.getElementById("btnLeft"), btnRight = document.getElementById("btnRight");
+
+        //自动切换
+        var step = 0, autoTimer = null, interval = 2000;
+        autoTimer = window.setInterval(autoMove, interval);
+        function autoMove() {
+            step++;
+            if (step > 4) {
+                step = 1;
+                inner.style.left = 0;
+            }
+            zhufengAnimate(inner, {left: -step * 730}, 500, 5);
+            changeTip();
+
+        }
+
+
+        //鼠标移入移除
+        banner.onmouseenter = function () {
+            window.clearInterval(autoTimer);
+            btn.style.display = "block";
+        };
+
+        banner.onmouseleave = function () {
+            autoTimer = window.setInterval(autoMove, interval);
+            btn.style.display = "none";
+        };
+
+        //左右按钮绑定点击事件
+        btnLeft.onclick = function () {
+            step--;
+            if (step < 0) {
+                step = 3;
+                inner.style.left = -4 * 730 + "px";
+            }
+            zhufengAnimate(inner, {left: -step * 730}, 500, 5);
+            changeTip();
+        };
+        btnRight.onclick = autoMove;
+
+        //tip与banner图对应
+        function changeTip() {
+            var tempStep = step;
+            tempStep >= tipList.length ? tempStep = 0 : null;
+            for (var i = 0; i < tipList.length; i++) {
+                tipList[i].className = i === tempStep ? "current" : null;
+            }
+        }
+
+        //绑定tip点击事件
+        tipMove();
+        function tipMove() {
+            for (var i = 0; i < tipList.length; i++) {
+                var curTip = tipList[i];
+                curTip.index = i;
+                curTip.onclick = function () {
+                    step = this.index;
+                    zhufengAnimate(inner, {left: -step * 730}, 500, 5);
+                    changeTip();
+                }
+            }
+        }
+
+    })();
+</script>
+</body>
+</html>

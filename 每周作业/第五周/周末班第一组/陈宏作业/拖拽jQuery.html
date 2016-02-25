@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #B61B1F;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" style="left: 10px; top:10px;"></div>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+    var $oDiv=$("#div1");
+    var move = false;//移动标记
+    var _x, _y;//鼠标离控件左上角的相对位置
+    $oDiv.mousedown(function (e) {
+
+        move = true;
+        _x = e.pageX - parseInt($oDiv.css("left"));
+        _y = e.pageY - parseInt($oDiv.css("top"));
+    });
+    $(document).mousemove(function (e) {
+        if (move) {
+            var minL = 0, minT = 0, maxL = $(window).width() - $oDiv.width(), maxT = $(window).height() - $("#div").height();
+            var curL = e.pageX - _x, curT = e.pageY - _y;
+            curL = (curL < minL) ? minL : (curL > maxL) ? maxL : curL;
+            curT = (curT < minT) ? minT : (curT > maxT) ? maxT : curT;
+            $oDiv.css({"top": curT, "left": curL});
+        }
+    }).mouseup(function () {
+        move = false;
+    });
+
+</script>
+</body>
+</html>

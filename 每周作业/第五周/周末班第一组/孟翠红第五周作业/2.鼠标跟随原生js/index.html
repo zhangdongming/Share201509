@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body, div, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            display: block;
+            border: none;
+        }
+
+        .box {
+            position: relative;
+            margin: 20px auto;
+            width: 450px;
+        }
+
+        .box img {
+            float: left;
+            margin-left: 10px;
+            width: 100px;
+            height: 75px;
+            border: 1px solid #008000;
+        }
+
+        #mark {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            width: 400px;
+            height: 300px;
+            border: 1px solid #0077B0;
+        }
+
+        #mark img {
+            float: inherit;
+            margin-left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <img src="images/apple_1.jpg" bigImg="images/apple_1_bigger.jpg"/>
+    <img src="images/apple_2.jpg" bigImg="images/apple_2_bigger.jpg"/>
+    <img src="images/apple_3.jpg" bigImg="images/apple_3_bigger.jpg"/>
+    <img src="images/apple_4.jpg" bigImg="images/apple_4_bigger.jpg"/>
+
+    <div id="mark">
+        <img src="images/apple_1_bigger.jpg"/>
+    </div>
+</div>
+<script type="text/javascript" src="js/animate.js"></script>
+<script type="text/javascript">
+    var oMark=document.getElementById("mark");
+    var oBox=document.getElementById("box");
+    var imgList=document.getElementsByTagName("img");
+    var markImg=oMark.getElementsByTagName("img")[0];
+    for(var i=0;i<imgList.length;i++){
+        (function(i){
+            var curImg=imgList[i];
+            curImg.onmouseenter=function(event){
+                event=event||window.event;
+                oMark.style.width=0,oMark.style.height=0;
+                oMark.style.display="block";
+                animate(oMark,{width:300,height:200},300);
+                markImg.src=curImg.getAttribute("bigImg");
+                oMark.style.left=event.clientX-curImg.clientLeft+5+"px";
+                oMark.style.top=event.clientY-curImg.clientTop+5+"px";
+            };
+            curImg.onmouseleave=function(event){
+                event=event||window.event;
+                oMark.style.display="none";
+            }
+            curImg.onmousemove=function(){
+                oMark.style.left=event.clientX-curImg.clientLeft+5+"px";
+                oMark.style.top=event.clientY-curImg.clientTop+5+"px";
+            }
+        })(i);
+    }
+</script>
+</body>
+</html>

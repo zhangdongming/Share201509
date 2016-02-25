@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #B61B1F;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" style="left: 0; top:0;"></div>
+<script type="text/javascript">
+    var oDiv = document.getElementById("div1");
+    oDiv.onmousedown = down;
+    function down(e) {
+        //记录当前信息
+        e = e || window.event;
+        this["strX"] = e.clientX;
+        this["strY"] = e.clientY;
+        this["strL"] = parseFloat(this.style.left);
+        this["strT"] = parseFloat(this.style.top);
+
+
+        //给元素绑定事件
+        if (this.setCapture) {
+            this.setCapture();
+            this.onmousemove = move;
+            this.onmouseup = up;
+        } else {
+            var _this = this;
+            document.onmousemove = function (e) {
+                move.call(_this, e);
+            };
+            document.onmouseup = function (e) {
+                up.call(_this, e);
+            };
+        }
+    }
+    ;
+    function move(e) {
+        e = e || window.event;
+
+        var curL = (e.clientX - this["strX"]) + this["strL"];
+        var curT = (e.clientY - this["strY"]) + this["strT"];
+        var minL = 0, minT = 0, maxL = (document.documentElement.clientWidth || document.body.clientWidth) - this.offsetWidth, maxT = (document.documentElement.clientHeight || document.body.clientHeight) - this.offsetHeight;
+
+        curL = (curL < minL) ? minL : (curL > maxL ? maxL : curL);
+        curT = (curT < minT) ? minT : (curT > maxT ? maxT : curT);
+
+        this.style.left = curL + "px";
+        this.style.top = curT + "px";
+    }
+    function up(e) {
+        e = e || window.event;
+        if (e.releaseCapture) {
+            this.releaseCapture();
+            this.onmousemove = null;
+            this.onmouseup = null;
+        } else {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+</script>
+</body>
+</html>

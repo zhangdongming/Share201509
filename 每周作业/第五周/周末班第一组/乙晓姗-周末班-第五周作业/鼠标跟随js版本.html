@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body,div,img{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 450px;
+            margin: 20px auto;
+            position: relative;
+        }
+        #box img {
+            width: 100px;
+            height: 75px;
+            float: left;
+            margin-left: 10px;
+            border: 1px solid green;
+        }
+        #mark{
+            width: 300px;
+            height: 200px;
+            display: none;
+            position: absolute;
+            left: 0;
+            top:0;
+            border: 1px solid #0077B0;
+            z-index: 10;
+        }
+        #mark img {
+            float: inherit;
+            margin-left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <img src="img/apple_1.jpg" bigImg="img/apple_1_bigger.jpg">
+    <img src="img/apple_2.jpg" bigImg="img/apple_2_bigger.jpg">
+    <img src="img/apple_3.jpg" bigImg="img/apple_3_bigger.jpg">
+    <img src="img/apple_4.jpg" bigImg="img/apple_4_bigger.jpg">
+</div>
+<div id="mark">
+    <img src="img/apple_1_bigger.jpg">
+</div>
+</body>
+<script type="text/javascript" src="js/animate.js"></script>
+<script type="text/javascript">
+    var oBox=document.getElementById("box");
+    var imgList=document.getElementsByTagName("img");
+    var mark=document.getElementById("mark");
+    var oImg=mark.getElementsByTagName("img")[0];
+
+
+    for(var i=0;i<imgList.length;i++){
+        (function(i){
+            var curImg=imgList[i];
+            curImg.onmouseenter=function(e){
+                e=e||window.event;
+                mark.style.width=0;
+                mark.style.height=0;
+                mark.style.display="block";
+                zhufengAnimate(mark,{width:400,height:300},400);
+                oImg.src=curImg.getAttribute("bigImg");
+                mark.style.left=e.clientX-curImg.clientLeft+5+"px";
+                mark.style.top=e.clientY-curImg.clientTop+5+"px";
+            };
+            curImg.onmouseleave=function(){
+                mark.style.display="none";
+            }
+            curImg.onmousemove=function(e){
+                mark.style.left=e.clientX-curImg.clientLeft+5+"px";
+                mark.style.top=e.clientY-curImg.clientTop+5+"px";
+            }
+        })(i);
+    }
+</script>
+</html>
